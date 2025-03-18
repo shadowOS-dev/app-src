@@ -1,6 +1,6 @@
 #include "syscall.h"
 
-static inline long syscall(uint64_t number, uint64_t arg1, uint64_t arg2, uint64_t arg3)
+long syscall(uint64_t number, uint64_t arg1, uint64_t arg2, uint64_t arg3)
 {
     long ret;
     __asm__ volatile(
