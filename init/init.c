@@ -2,7 +2,10 @@
 
 void _start(void)
 {
+    // Print some fancy bytes to clear screen
+    write(STDOUT, "\033[2J\033[H\033[?25l", 12);
+
     // Print message
-    write(STDOUT, "\033cthis init script currently does nothing but eh, atleast it runs :^)\n", 71);
+    write(STDOUT, "this init script currently does nothing but eh, atleast it runs :^)\n", 71);
     exit(0);
 }
