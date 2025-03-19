@@ -21,9 +21,9 @@ void exit(int status)
     syscall(SYS_exit, status, 0, 0);
 }
 
-int open(const char *pathname)
+int open(const char *pathname, uint64_t flags, uint8_t kind)
 {
-    return (int)syscall(SYS_open, (uint64_t)pathname, 0, 0);
+    return (int)syscall(SYS_open, (uint64_t)pathname, flags, kind);
 }
 
 int close(int fd)

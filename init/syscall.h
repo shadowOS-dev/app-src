@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+#define BIT(x) (1U << (x))
+
 #define STDOUT 0
 #define SYS_exit 0
 #define SYS_open 1
@@ -21,11 +23,15 @@ typedef struct stat
     uint32_t mode;
 } stat_t;
 
+// open() flags--
+#define O_CREATE BIT(0)
+// --end
+
 long syscall(uint64_t number, uint64_t arg1, uint64_t arg2, uint64_t arg3);
 
 void write(int fd, const char *buf, uint64_t size);
 void exit(int status);
-int open(const char *pathname);
+int open(const char *pathname, uint64_t flags, uint8_t kind);
 int close(int fd);
 int read(int fd, char *buf, uint64_t size);
 int stat(int fd, stat_t *stat);
