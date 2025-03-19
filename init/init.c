@@ -3,7 +3,7 @@
 void _start(void)
 {
     // Create /test.txt
-    int fd = open("/test.txt", O_CREATE, 0x0002); // 0x0002 -> regular file.
+    int fd = open("/test.txt", 0, 0); // 0x0002 -> regular file.
     if (fd == -1)
     {
         exit(1);
