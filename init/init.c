@@ -47,6 +47,6 @@ void display_vendor()
 void _start(void)
 {
     display_vendor();
-    write(STDOUT, "\n", 1);
+    write(STDOUT, "Hello", 6);
     exit(1);
 }
