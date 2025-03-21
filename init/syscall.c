@@ -40,3 +40,23 @@ int stat(int fd, stat_t *stat)
 {
     return (int)syscall(SYS_stat, fd, (uint64_t)stat, 0);
 }
+
+int setuid(uint32_t uid)
+{
+    return (int)syscall(SYS_setuid, uid, 0, 0);
+}
+
+int setgid(uint32_t gid)
+{
+    return (int)syscall(SYS_setgid, gid, 0, 0);
+}
+
+int ioctl(int fd, uint32_t cmd, uint32_t arg)
+{
+    return (int)syscall(SYS_ioctl, fd, cmd, arg);
+}
+
+int getpid(void)
+{
+    return (int)syscall(SYS_getpid, 0, 0, 0);
+}
