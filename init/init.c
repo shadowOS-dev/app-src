@@ -45,7 +45,13 @@ void display_vendor()
 
 void _start(void)
 {
+    // Display vendor
+    write(STDOUT, "CPU: ", 5);
     display_vendor();
-    write(STDOUT, "Hello", 6);
+    write(STDOUT, "\n", 1);
+
+    // Test some ioctl stuff (unsupported on stdout, for now)
+    ioctl(STDOUT, 0, 0);
+
     exit(0);
 }
