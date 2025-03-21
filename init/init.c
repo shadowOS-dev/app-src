@@ -1,7 +1,8 @@
 #include "syscall.h"
 
-void _start(void)
+void display_vendor()
 {
+
     char buf[1024];
     int fd = open("/proc/cpuinfo", 0, 0);
     if (fd == -1)
@@ -41,5 +42,11 @@ void _start(void)
         }
         i++;
     }
+}
+
+void _start(void)
+{
+    display_vendor();
+    write(STDOUT, "\n", 1);
     exit(1);
 }
