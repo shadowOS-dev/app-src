@@ -1,6 +1,7 @@
 #include "syscall.h"
 
-// A simple test printing out CPU Vendor.
+#include "syscall.h"
+
 void _start(void)
 {
     char buf[1024];
@@ -28,7 +29,7 @@ void _start(void)
         if (j == 9)
         {
             i += 10;
-            char vendor_id[12];
+            char vendor_id[13];
             int k = 0;
             while (buf[i] != '\n' && k < 12 && i < bytes_read)
             {
