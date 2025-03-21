@@ -1,7 +1,5 @@
 #include "syscall.h"
 
-#include "syscall.h"
-
 void _start(void)
 {
     char buf[1024];
@@ -16,19 +14,20 @@ void _start(void)
     buf[bytes_read] = '\0';
     close(fd);
 
-    char vendor_id_marker[] = "vendor_id";
+    char vendor_id_marker[] = "vendor_id:";
     int i = 0;
-    while (i < bytes_read - 9)
+    while (i < bytes_read - 10)
     {
         int j = 0;
-        while (j < 9 && buf[i + j] == vendor_id_marker[j])
+        while (j < 10 && buf[i + j] == vendor_id_marker[j])
         {
             j++;
         }
 
-        if (j == 9)
+        if (j == 10)
         {
-            i += 10;
+            i += 11;
+
             char vendor_id[13];
             int k = 0;
             while (buf[i] != '\n' && k < 12 && i < bytes_read)
@@ -36,6 +35,7 @@ void _start(void)
                 vendor_id[k++] = buf[i++];
             }
             vendor_id[k] = '\0';
+
             write(STDOUT, vendor_id, k);
             exit(0);
         }
