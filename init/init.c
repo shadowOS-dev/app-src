@@ -38,7 +38,6 @@ void display_vendor()
             vendor_id[k] = '\0';
 
             write(STDOUT, vendor_id, k);
-            exit(0);
         }
         i++;
     }
@@ -48,5 +47,5 @@ void _start(void)
 {
     display_vendor();
     write(STDOUT, "Hello", 6);
-    exit(1);
+    exit(0);
 }
