@@ -13,16 +13,26 @@ typedef long ssize_t;
 #define NANOPRINTF_IMPLEMENTATION
 #include "nanoprintf.h"
 
-// Printf stuff, for debugging
 void put(const char *data, size_t length)
 {
-    write(stdout, data, length);
+    if (data == NULL || length == 0)
+        return;
+
+    ssize_t result = write(stdout, data, length);
+    if (result < 0)
+    {
+    }
 }
 
 int vprintf(const char *fmt, va_list args)
 {
     char buffer[1024];
     int length = npf_vsnprintf(buffer, sizeof(buffer), fmt, args);
+
+    if (length >= sizeof(buffer))
+    {
+        buffer[sizeof(buffer) - 1] = '\0';
+    }
 
     if (length >= 0 && length < (int)sizeof(buffer))
     {
@@ -41,9 +51,8 @@ int printf(const char *fmt, ...)
     return length;
 }
 
-// Entry
 void _start(void)
 {
-    printf("Hello, World (using printf)!\n");
+    printf("Hello, World (using %s)!\n", "printf");
     exit(0);
 }
