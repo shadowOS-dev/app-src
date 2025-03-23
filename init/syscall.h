@@ -22,7 +22,7 @@
 #define O_CREATE BIT(0)
 
 // default file descriptors
-#define stdout 1
+#define stdout 0
 
 typedef struct stat
 {
