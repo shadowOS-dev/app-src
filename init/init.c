@@ -53,6 +53,7 @@ int printf(const char *fmt, ...)
 
 void _start(void)
 {
-    printf("Hello, World (using %s)!\n", "printf");
+    // printf("Hello, World (using %s)!\n", "printf");
+    write(stdout, "Hello, World!\n", 14);
     exit(0);
 }
