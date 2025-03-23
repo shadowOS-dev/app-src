@@ -44,6 +44,6 @@ int printf(const char *fmt, ...)
 // Entry
 void _start(void)
 {
-    printf("Hello, World (using %s)!\n", "printf");
+    printf("Hello, World (using printf)!\n");
     exit(0);
 }
