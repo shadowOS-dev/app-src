@@ -51,6 +51,9 @@ void _start(void)
         exit(1);
     }
 
-    printf("[+] keyboard is open!\n");
+    uint8_t scancode = 0;
+    while (read(fd, &scancode, 1) != -1)
+        printf("%c", scancode);
+
     exit(0);
 }
