@@ -44,7 +44,7 @@ void _start(void)
 {
 
     printf("[*] Try writing something: ");
-    int fd = open("/dev/ps2kb", 0, 0);
+    int fd = open("/dev/ps2kb1", 0, 0);
     if (fd == -1)
     {
         printf("[!] Failed to open keyboard\n");
