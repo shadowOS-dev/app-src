@@ -43,5 +43,6 @@ int printf(const char *fmt, ...)
 void _start(void)
 {
     printf("Hello using printf()!\n");
+    printf("Hello using printf() again!\n");
     exit(0);
 }
