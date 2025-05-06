@@ -13,17 +13,6 @@ typedef long ssize_t;
 #define NANOPRINTF_IMPLEMENTATION
 #include "nanoprintf.h"
 
-void put(const char *data, size_t length)
-{
-    if (data == NULL || length == 0)
-        return;
-
-    ssize_t result = write(stdout, data, length);
-    if (result < 0)
-    {
-    }
-}
-
 int vprintf(const char *fmt, va_list args)
 {
     char buffer[1024];
@@ -36,7 +25,7 @@ int vprintf(const char *fmt, va_list args)
 
     if (length >= 0 && length < (int)sizeof(buffer))
     {
-        put(buffer, length);
+        write(0, buffer, length);
     }
 
     return length;
@@ -53,7 +42,6 @@ int printf(const char *fmt, ...)
 
 void _start(void)
 {
-    write(0, "Hello using raw write()!\n", 25);
     printf("Hello using printf()!\n");
     exit(0);
 }
