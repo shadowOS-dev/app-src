@@ -53,6 +53,6 @@ int printf(const char *fmt, ...)
 
 void _start(void)
 {
-    printf("Hello, World (using %s)!\n", "printf");
+    printf("Hello, World!\n");
     exit(0);
 }
