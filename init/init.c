@@ -54,6 +54,6 @@ int printf(const char *fmt, ...)
 void _start(void)
 {
     write(0, "Hello using raw write()!\n", 25);
-    printf("Hello using printf()!\n");
+    // printf("Hello using printf()!\n");
     exit(0);
 }
