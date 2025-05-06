@@ -43,7 +43,7 @@ int printf(const char *fmt, ...)
 void _start(void)
 {
     char buf[1024];
-    int fd = open("/proc/cpuinfo", 0, 0);
+    int fd = open("/test.txt", 0, 0);
     if (fd == -1)
         exit(1);
 
@@ -53,31 +53,6 @@ void _start(void)
 
     buf[bytes_read] = '\0';
     close(fd);
-
-    char vendor_id_marker[] = "vendor_id";
-    int i = 0;
-    while (i < bytes_read - 9)
-    {
-        int j = 0;
-        while (j < 9 && buf[i + j] == vendor_id_marker[j])
-        {
-            j++;
-        }
-
-        if (j == 9)
-        {
-            i += 10;
-            char vendor_id[12];
-            int k = 0;
-            while (buf[i] != '\n' && k < 12 && i < bytes_read)
-            {
-                vendor_id[k++] = buf[i++];
-            }
-            vendor_id[k] = '\0';
-            write(0, vendor_id, k);
-            exit(0);
-        }
-        i++;
-    }
-    exit(1);
+    printf("%s", buf);
+    exit(0);
 }
